@@ -10,6 +10,23 @@ class App
 {
 
 	/**
+	 * Method regCmd
+	 *
+	 * @access public
+	 *
+	 * @param  string $command
+	 * @param  class[ACmd] $class
+	 *
+	 * @return self
+	 */
+	public function regCmd( string$command, string$class ):self
+	{
+		$this->commands[$command]= $class;
+
+		return $this;
+	}
+
+	/**
 	 * Run the application with raw arguments.
 	 *
 	 * @access public
