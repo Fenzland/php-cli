@@ -1,0 +1,20 @@
+{
+    "name": "fenzland/cli",
+    "description": "For build cli applications.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fenzland",
+            "email": "uukoo@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fenzland\\CLI\\": "src/"
+        }
+    }
+}
