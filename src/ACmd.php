@@ -23,6 +23,21 @@ abstract class ACmd
 	abstract protected function main( IArgs$args ):int;
 
 	/**
+	 * Method catch
+	 *
+	 * @overridable
+	 * @access public
+	 *
+	 * @param  \Throwable $e
+	 *
+	 * @return int
+	 */
+	public function catch( \Throwable$e ):int
+	{
+		return 1;
+	}
+
+	/**
 	 * Constructor
 	 *
 	 * @access public
@@ -34,7 +49,13 @@ abstract class ACmd
 	{
 		$args instanceof IArgs or $args= new Args( $args );
 
-		return $this->main( $args );
+		try{
+			return $this->main( $args );
+		}
+		catch( \Throwable$e )
+		{
+			return $this->catch( $e );
+		}
 	}
 
 }
