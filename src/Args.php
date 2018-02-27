@@ -111,6 +111,17 @@ class Args implements IArgs
 	}
 
 	/**
+	 * Method __clone
+	 *
+	 * @access public
+	 */
+	public function __clone()
+	{
+		$this->options= clone $this->options;
+		$this->params= clone $this->params;
+	}
+
+	/**
 	 * Var args
 	 *
 	 * @access protected
