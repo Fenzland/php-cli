@@ -82,6 +82,62 @@ class ParamPack implements \Countable, \IteratorAggregate
 	}
 
 	/**
+	 * Method slice
+	 *
+	 * @access public
+	 *
+	 * @param  int $start
+	 * @param  int $length
+	 *
+	 * @return viod
+	 */
+	public function slice( int$start=0, ?int$length=null )
+	{
+		return new static( array_slice( $this->params, $start, $length ) );
+	}
+
+	/**
+	 * Method cut
+	 *
+	 * @access public
+	 *
+	 * @param  int $offset
+	 *
+	 * @return viod
+	 */
+	public function cut( int$offset )
+	{
+		return [
+			$this->slice( 0, $offset ),
+			$this->slice( $offset ),
+		];
+	}
+
+	/**
+	 * Method firstOthers
+	 *
+	 * @access public
+	 *
+	 * @return array
+	 */
+	public function firstOthers():array
+	{
+		return $this->cut( 1 );
+	}
+
+	/**
+	 * Method lastOthers
+	 *
+	 * @access public
+	 *
+	 * @return array
+	 */
+	public function lastOthers():array
+	{
+		return array_reverse( $this->cut( -1 ) );
+	}
+
+	/**
 	 * Constructor
 	 *
 	 * @access public
