@@ -6,7 +6,7 @@ namespace Fenzland\CLI;
 
 ////////////////////////////////////////////////////////////////
 
-class OptionPack implements \Countable
+class OptionPack implements \Countable, \ArrayAccess
 {
 
 	/**
@@ -73,6 +73,55 @@ class OptionPack implements \Countable
 		{
 			unset( $this->options[$option] );
 		}
+	}
+
+	/**
+	 * Check if option exists via array access style.
+	 *
+	 * @param  mixed $offset
+	 *
+	 * @return bool
+	 */
+	public function offsetExists( $offset ):bool
+	{
+		return $this->exists( $offset );
+	}
+
+	/**
+	 * Get option value via array access style.
+	 *
+	 * @param  mixed $offset
+	 *
+	 * @return mixed
+	 */
+	public function offsetGet( $offset )
+	{
+		return $this->get( $offset );
+	}
+
+	/**
+	 * Set option value via array access style.
+	 *
+	 * @param  mixed $offset
+	 * @param  mixed $value
+	 *
+	 * @return void
+	 */
+	public function offsetSet( $offset, $value ):void
+	{
+		$this->set( $offset, $value );
+	}
+
+	/**
+	 * Remove option via array access style.
+	 *
+	 * @param  mixed $offset
+	 *
+	 * @return void
+	 */
+	public function offsetUnset( $offset ):void
+	{
+		$this->remove( $offset );
 	}
 
 	/**
