@@ -20,6 +20,9 @@ class Args implements IArgs
 	{
 		$this->args= $args;
 		$this->command= array_pop( $args );
+		$this->options= new OptionPack;
+		$this->params= new ParamPack;
+
 	}
 
 	/**
@@ -47,7 +50,7 @@ class Args implements IArgs
 	 */
 	public function getParams():ParamPack
 	{
-		#
+		return $this->params;
 	}
 
 	/**
@@ -61,7 +64,7 @@ class Args implements IArgs
 	 */
 	public function getOptions():OptionPack
 	{
-		#
+		return $this->options;
 	}
 
 	/**
@@ -107,5 +110,23 @@ class Args implements IArgs
 	 * @var    string
 	 */
 	protected $command;
+
+	/**
+	 * Var params
+	 *
+	 * @access protected
+	 *
+	 * @var    ParamPack
+	 */
+	protected $params;
+
+	/**
+	 * Var options
+	 *
+	 * @access protected
+	 *
+	 * @var    OptionPack
+	 */
+	protected $options;
 
 }
