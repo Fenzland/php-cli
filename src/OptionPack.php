@@ -6,7 +6,7 @@ namespace Fenzland\CLI;
 
 ////////////////////////////////////////////////////////////////
 
-class OptionPack implements \Countable, \ArrayAccess
+class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 {
 
 	/**
@@ -122,6 +122,16 @@ class OptionPack implements \Countable, \ArrayAccess
 	public function offsetUnset( $offset ):void
 	{
 		$this->remove( $offset );
+	}
+
+	/**
+	 * Get an iterator for foreach.
+	 *
+	 * @return \ArrayIterator
+	 */
+	public function getIterator()
+	{
+		return new \ArrayIterator( $this->options );
 	}
 
 	/**
