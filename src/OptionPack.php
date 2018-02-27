@@ -6,8 +6,18 @@ namespace Fenzland\CLI;
 
 ////////////////////////////////////////////////////////////////
 
-class OptionPack
+class OptionPack implements \Countable
 {
+
+	/**
+	 * Count options.
+	 *
+	 * @return int
+	 */
+	public function count()
+	{
+		return count( $this->options );
+	}
 
 	/**
 	 * Check if option exists.
