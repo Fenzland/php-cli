@@ -38,6 +38,11 @@ class App
 	{
 		$command= $args->getCommand();
 
+		if(!( isset( $this->commands[$command] ) ))
+		{
+			return $this->commandNotFound( $command, $args );
+		}
+
 		return $this->commands[$command]::execute( $args );
 	}
 
@@ -49,5 +54,22 @@ class App
 	 * @var    array
 	 */
 	protected $commands= [];
+
+	/**
+	 * Render command not found error.
+	 *
+	 * @access protected
+	 *
+	 * @param  string $command
+	 * @param  IArgs $args
+	 *
+	 * @return int
+	 */
+	protected function commandNotFound( string$command, IArgs$args ):int
+	{
+		echo "command $command not found";
+
+		return 1;
+	}
 
 }
