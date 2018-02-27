@@ -6,7 +6,7 @@ namespace Fenzland\CLI;
 
 ////////////////////////////////////////////////////////////////
 
-class ParamPack
+class ParamPack implements \Countable
 {
 
 	/**
@@ -59,6 +59,16 @@ class ParamPack
 	public function poll():string
 	{
 		return array_shift( $this->params );
+	}
+
+	/**
+	 * Count params.
+	 *
+	 * @return int
+	 */
+	public function count()
+	{
+		return count( $this->params );
 	}
 
 	/**
