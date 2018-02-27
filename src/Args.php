@@ -107,7 +107,11 @@ class Args implements IArgs
 	 */
 	public function sub():IArgs
 	{
-		#
+		$sub= clone $this;
+
+		$sub->command= $sub->params->poll()??'';
+
+		return $sub;
 	}
 
 	/**
