@@ -19,6 +19,7 @@ class Args implements IArgs
 	public function __construct( array$args )
 	{
 		$this->args= $args;
+		$this->command= array_pop( $args );
 	}
 
 	/**
@@ -32,7 +33,7 @@ class Args implements IArgs
 	 */
 	public function getCommand():string
 	{
-		#
+		return $this->command;
 	}
 
 	/**
@@ -97,5 +98,14 @@ class Args implements IArgs
 	 * @var    array
 	 */
 	protected $args;
+
+	/**
+	 * Var command
+	 *
+	 * @access protected
+	 *
+	 * @var    string
+	 */
+	protected $command;
 
 }
