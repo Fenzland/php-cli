@@ -6,7 +6,7 @@ namespace Fenzland\CLI;
 
 ////////////////////////////////////////////////////////////////
 
-class ParamPack implements \Countable
+class ParamPack implements \Countable, \IteratorAggregate
 {
 
 	/**
@@ -69,6 +69,16 @@ class ParamPack implements \Countable
 	public function count()
 	{
 		return count( $this->params );
+	}
+
+	/**
+	 * Get an iterator for foreach.
+	 *
+	 * @return \ArrayIterator
+	 */
+	public function getIterator()
+	{
+		return new \ArrayIterator( $this->params );
 	}
 
 	/**
