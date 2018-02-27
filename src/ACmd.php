@@ -58,4 +58,21 @@ abstract class ACmd
 		}
 	}
 
+	/**
+	 * Static method execute
+	 *
+	 * @static
+	 * @final
+	 *
+	 * @param  IArgs $args
+	 *
+	 * @access public
+	 *
+	 * @return int
+	 */
+	static public final function execute( IArgs$args ):int
+	{
+		return (new static)->run( $args );
+	}
+
 }
