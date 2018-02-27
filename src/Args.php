@@ -23,6 +23,23 @@ class Args implements IArgs
 		$this->options= new OptionPack;
 		$this->params= new ParamPack;
 
+		foreach( $args as $arg )
+		{
+			switch( strcmplen( '--', $arg ) )
+			{
+				case 1:{
+					$this->addShortOption( substr( $arg, 1 ) );
+				}break;
+
+				case 2:{
+					$this->addOption( substr( $arg, 2 ) );
+				}break;
+
+				default:{
+					$this->addParam( $arg );
+				}break;
+			}
+		}
 	}
 
 	/**
@@ -128,5 +145,50 @@ class Args implements IArgs
 	 * @var    OptionPack
 	 */
 	protected $options;
+
+	/**
+	 * Method addShortOption
+	 *
+	 * @access private
+	 *
+	 * @param  string $option
+	 *
+	 * @return viod
+	 */
+	private function addShortOption( string$option )
+	{
+		$this->options->set( $option, $option );
+	}
+
+	/**
+	 * Method addOption
+	 *
+	 * @access private
+	 *
+	 * @param  string $option
+	 *
+	 * @return viod
+	 */
+	private function addOption( string$option )
+	{
+		if( strpos( $option, '=' ) )
+			$this->options->set( strtok( $option, '=' ), strtok( '' ) );
+		else
+			$this->options->set( $option, $option );
+	}
+
+	/**
+	 * Method addParam
+	 *
+	 * @access private
+	 *
+	 * @param  string $param
+	 *
+	 * @return viod
+	 */
+	private function addParam( string$param )
+	{
+		$this->options->append( $param );
+	}
 
 }
