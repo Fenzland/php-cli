@@ -4,10 +4,13 @@ declare( strict_types= 1 );
 
 namespace Fenzland\CLI;
 
+use FenzHelpers\TGetter;
+
 ////////////////////////////////////////////////////////////////
 
 class Args implements IArgs
 {
+	use TGetter;
 
 	/**
 	 * Constructor
