@@ -82,6 +82,25 @@ class ParamPack implements \Countable, \IteratorAggregate
 	}
 
 	/**
+	 * Method pick
+	 *
+	 * @access public
+	 *
+	 * @param  int $i
+	 * @param  int $length
+	 *
+	 * @return mixed
+	 */
+	public function pick( int$i=0 )
+	{
+		return (
+			$i>=0
+			? ($this->params[$i]??null)
+			: (array_reverse( $this->params )[-$i]??null)
+		);
+	}
+
+	/**
 	 * Method slice
 	 *
 	 * @access public
