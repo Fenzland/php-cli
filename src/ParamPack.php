@@ -16,7 +16,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 *
 	 * @param  string $param
 	 *
-	 * @return viod
+	 * @return void
 	 */
 	public function append( string$param ):void
 	{
@@ -30,7 +30,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 *
 	 * @param  string $param
 	 *
-	 * @return viod
+	 * @return void
 	 */
 	public function prepend( string$param ):void
 	{
@@ -66,7 +66,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 *
 	 * @return int
 	 */
-	public function count()
+	public function count():int
 	{
 		return count( $this->params );
 	}
@@ -76,7 +76,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 *
 	 * @return \ArrayIterator
 	 */
-	public function getIterator()
+	public function getIterator():\ArrayIterator
 	{
 		return new \ArrayIterator( $this->params );
 	}
@@ -108,9 +108,9 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 * @param  int $start
 	 * @param  int $length
 	 *
-	 * @return viod
+	 * @return static
 	 */
-	public function slice( int$start=0, ?int$length=null )
+	public function slice( int$start=0, ?int$length=null ):self
 	{
 		return new static( array_slice( $this->params, $start, $length ) );
 	}
@@ -122,9 +122,9 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 *
 	 * @param  int $offset
 	 *
-	 * @return viod
+	 * @return array
 	 */
-	public function cut( int$offset )
+	public function cut( int$offset ):array
 	{
 		return [
 			$this->slice( 0, $offset ),
