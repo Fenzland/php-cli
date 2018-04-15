@@ -165,7 +165,10 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 */
 	public function firstOthers():array
 	{
-		return $this->cut( 1 );
+		return [
+			$this->pick( 1 ),
+			$this->slice( 1 ),
+		];
 	}
 
 	/**
@@ -177,7 +180,10 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 */
 	public function lastOthers():array
 	{
-		return array_reverse( $this->cut( -1 ) );
+		return [
+			$this->pick( -1 ),
+			$this->slice( -1 ),
+		];
 	}
 
 	/**
