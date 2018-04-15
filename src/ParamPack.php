@@ -133,6 +133,30 @@ class ParamPack implements \Countable, \IteratorAggregate
 	}
 
 	/**
+	 * Method first
+	 *
+	 * @access public
+	 *
+	 * @return mixed
+	 */
+	public function first()
+	{
+		return $this->pick( 1 );
+	}
+
+	/**
+	 * Method last
+	 *
+	 * @access public
+	 *
+	 * @return mixed
+	 */
+	public function last()
+	{
+		return $this->pick( -1 );
+	}
+
+	/**
 	 * Method firstOthers
 	 *
 	 * @access public
