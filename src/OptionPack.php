@@ -8,7 +8,7 @@ namespace Fenzland\CLI;
 
 class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 {
-
+	
 	/**
 	 * Count options.
 	 *
@@ -18,7 +18,7 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	{
 		return count( $this->options );
 	}
-
+	
 	/**
 	 * Check if option exists.
 	 *
@@ -30,7 +30,7 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	{
 		return isset( $this->options[$option] );
 	}
-
+	
 	/**
 	 * Get option value.
 	 *
@@ -43,10 +43,10 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 		foreach( $options as $option )
 			if( $this->exists( $option ) )
 				return $this->options[$option];
-
+			
 		return null;
 	}
-
+	
 	/**
 	 * Set option value.
 	 *
@@ -59,7 +59,7 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	{
 		$this->options[$option]= $value;
 	}
-
+	
 	/**
 	 * Remove option.
 	 *
@@ -70,11 +70,9 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	public function remove( string$option ):void
 	{
 		if( $this->exists( $option ) )
-		{
 			unset( $this->options[$option] );
-		}
 	}
-
+	
 	/**
 	 * Check if option exists via array access style.
 	 *
@@ -86,7 +84,7 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	{
 		return $this->exists( $offset );
 	}
-
+	
 	/**
 	 * Get option value via array access style.
 	 *
@@ -98,7 +96,7 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	{
 		return $this->get( $offset );
 	}
-
+	
 	/**
 	 * Set option value via array access style.
 	 *
@@ -111,7 +109,7 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	{
 		$this->set( $offset, $value );
 	}
-
+	
 	/**
 	 * Remove option via array access style.
 	 *
@@ -123,7 +121,7 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	{
 		$this->remove( $offset );
 	}
-
+	
 	/**
 	 * Get an iterator for foreach.
 	 *
@@ -133,7 +131,7 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	{
 		return new \ArrayIterator( $this->options );
 	}
-
+	
 	/**
 	 * Options.
 	 *
@@ -142,5 +140,5 @@ class OptionPack implements \Countable, \ArrayAccess, \IteratorAggregate
 	 * @var    array
 	 */
 	protected $options= [];
-
+	
 }

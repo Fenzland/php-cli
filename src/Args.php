@@ -11,7 +11,7 @@ use FenzHelpers\TGetter;
 class Args implements IArgs
 {
 	use TGetter;
-
+	
 	/**
 	 * Constructor
 	 *
@@ -25,26 +25,26 @@ class Args implements IArgs
 		$this->command= array_pop( $args );
 		$this->options= new OptionPack;
 		$this->params= new ParamPack;
-
+		
 		foreach( $args as $arg )
 		{
 			switch( strcmplen( '--', $arg ) )
 			{
-				case 1:{
+				case 1:
 					$this->addShortOption( substr( $arg, 1 ) );
-				}break;
-
-				case 2:{
+				break;
+				
+				case 2:
 					$this->addOption( substr( $arg, 2 ) );
-				}break;
-
-				default:{
+				break;
+				
+				default:
 					$this->addParam( $arg );
-				}break;
+				break;
 			}
 		}
 	}
-
+	
 	/**
 	 * Method getCommand
 	 *
@@ -58,7 +58,7 @@ class Args implements IArgs
 	{
 		return $this->command;
 	}
-
+	
 	/**
 	 * Method getParams
 	 *
@@ -72,7 +72,7 @@ class Args implements IArgs
 	{
 		return $this->params;
 	}
-
+	
 	/**
 	 * Method getOptions
 	 *
@@ -86,7 +86,7 @@ class Args implements IArgs
 	{
 		return $this->options;
 	}
-
+	
 	/**
 	 * Method getRaw
 	 *
@@ -100,7 +100,7 @@ class Args implements IArgs
 	{
 		return $this->args;
 	}
-
+	
 	/**
 	 * Method sub
 	 *
@@ -111,12 +111,12 @@ class Args implements IArgs
 	public function sub():IArgs
 	{
 		$sub= clone $this;
-
+		
 		$sub->command= $sub->params->poll()??'';
-
+		
 		return $sub;
 	}
-
+	
 	/**
 	 * Method __clone
 	 *
@@ -127,7 +127,7 @@ class Args implements IArgs
 		$this->options= clone $this->options;
 		$this->params= clone $this->params;
 	}
-
+	
 	/**
 	 * Var args
 	 *
@@ -136,7 +136,7 @@ class Args implements IArgs
 	 * @var    array
 	 */
 	protected $args;
-
+	
 	/**
 	 * Var command
 	 *
@@ -145,7 +145,7 @@ class Args implements IArgs
 	 * @var    string
 	 */
 	protected $command;
-
+	
 	/**
 	 * Var params
 	 *
@@ -154,7 +154,7 @@ class Args implements IArgs
 	 * @var    ParamPack
 	 */
 	protected $params;
-
+	
 	/**
 	 * Var options
 	 *
@@ -163,7 +163,7 @@ class Args implements IArgs
 	 * @var    OptionPack
 	 */
 	protected $options;
-
+	
 	/**
 	 * Method addShortOption
 	 *
@@ -177,7 +177,7 @@ class Args implements IArgs
 	{
 		$this->options->set( $option, $option );
 	}
-
+	
 	/**
 	 * Method addOption
 	 *
@@ -194,7 +194,7 @@ class Args implements IArgs
 		else
 			$this->options->set( $option, $option );
 	}
-
+	
 	/**
 	 * Method addParam
 	 *
@@ -208,5 +208,5 @@ class Args implements IArgs
 	{
 		$this->options->append( $param );
 	}
-
+	
 }

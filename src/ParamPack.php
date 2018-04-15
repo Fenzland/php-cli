@@ -8,7 +8,7 @@ namespace Fenzland\CLI;
 
 class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 {
-
+	
 	/**
 	 * Add a param to the last.
 	 *
@@ -22,7 +22,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		$this->params[]= $param;
 	}
-
+	
 	/**
 	 * Add a param to the first.
 	 *
@@ -36,7 +36,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		array_unshift( $this->params, $param );
 	}
-
+	
 	/**
 	 * Remove a param from the last and return it.
 	 *
@@ -48,7 +48,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		return array_pop( $this->params );
 	}
-
+	
 	/**
 	 * Remove a param from the first and return it.
 	 *
@@ -60,7 +60,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		return array_shift( $this->params );
 	}
-
+	
 	/**
 	 * Count params.
 	 *
@@ -70,7 +70,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		return count( $this->params );
 	}
-
+	
 	/**
 	 * Get an iterator for foreach.
 	 *
@@ -80,7 +80,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		return new \ArrayIterator( $this->params );
 	}
-
+	
 	/**
 	 * Method pick
 	 *
@@ -99,7 +99,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 			: (array_reverse( $this->params )[-$i]??null)
 		);
 	}
-
+	
 	/**
 	 * Method slice
 	 *
@@ -114,7 +114,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		return new static( array_slice( $this->params, $start, $length ) );
 	}
-
+	
 	/**
 	 * Method cut
 	 *
@@ -131,7 +131,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 			$this->slice( $offset ),
 		];
 	}
-
+	
 	/**
 	 * Method first
 	 *
@@ -143,7 +143,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		return $this->pick( 1 );
 	}
-
+	
 	/**
 	 * Method last
 	 *
@@ -155,7 +155,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		return $this->pick( -1 );
 	}
-
+	
 	/**
 	 * Method firstOthers
 	 *
@@ -170,7 +170,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 			$this->slice( 1 ),
 		];
 	}
-
+	
 	/**
 	 * Method lastOthers
 	 *
@@ -185,7 +185,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 			$this->slice( -1 ),
 		];
 	}
-
+	
 	/**
 	 * Check if option exists via array access style.
 	 *
@@ -199,7 +199,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 		
 		return !is_null( $this->pick( $offset ) );
 	}
-
+	
 	/**
 	 * Get option value via array access style.
 	 *
@@ -213,7 +213,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 		
 		return $this->pick( $offset );
 	}
-
+	
 	/**
 	 * Set option value via array access style.
 	 *
@@ -226,7 +226,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		throw new \Exception( 'ReadOnly' );
 	}
-
+	
 	/**
 	 * Remove option via array access style.
 	 *
@@ -238,7 +238,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		throw new \Exception( 'ReadOnly' );
 	}
-
+	
 	/**
 	 * Method checkOffset
 	 *
@@ -253,7 +253,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 		if(!( is_int( $offset ) ))
 			throw new \Exception( 'Offset of paramPack must be a integer.' );
 	}
-
+	
 	/**
 	 * Constructor
 	 *
@@ -265,7 +265,7 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	{
 		$this->params= $params;
 	}
-
+	
 	/**
 	 * Params.
 	 *
@@ -274,5 +274,5 @@ class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 	 * @var    array
 	 */
 	protected $params;
-
+	
 }

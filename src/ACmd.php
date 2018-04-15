@@ -8,7 +8,7 @@ namespace Fenzland\CLI;
 
 abstract class ACmd
 {
-
+	
 	/**
 	 * Method run
 	 *
@@ -21,7 +21,7 @@ abstract class ACmd
 	 * @throws \Throwable
 	 */
 	abstract protected function main( IArgs$args ):int;
-
+	
 	/**
 	 * Method catch
 	 *
@@ -36,7 +36,7 @@ abstract class ACmd
 	{
 		return 1;
 	}
-
+	
 	/**
 	 * Constructor
 	 *
@@ -57,7 +57,7 @@ abstract class ACmd
 			return $this->catch( $e );
 		}
 	}
-
+	
 	/**
 	 * Static method execute
 	 *
@@ -74,5 +74,5 @@ abstract class ACmd
 	{
 		return (new static)->run( $args );
 	}
-
+	
 }

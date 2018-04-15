@@ -8,7 +8,7 @@ namespace Fenzland\CLI;
 
 interface IArgs
 {
-
+	
 	/**
 	 * Method getCommand
 	 *
@@ -19,7 +19,7 @@ interface IArgs
 	 * @return string
 	 */
 	function getCommand():string;
-
+	
 	/**
 	 * Method getParams
 	 *
@@ -30,7 +30,7 @@ interface IArgs
 	 * @return ParamPack
 	 */
 	function getParams():ParamPack;
-
+	
 	/**
 	 * Method getOptions
 	 *
@@ -41,7 +41,7 @@ interface IArgs
 	 * @return OptionPack
 	 */
 	function getOptions():OptionPack;
-
+	
 	/**
 	 * Method getOptions
 	 *
@@ -52,7 +52,7 @@ interface IArgs
 	 * @return array
 	 */
 	function getRaw():array;
-
+	
 	/**
 	 * Method getOptions
 	 *
@@ -63,5 +63,5 @@ interface IArgs
 	 * @return IArgs
 	 */
 	function sub():IArgs;
-
+	
 }
