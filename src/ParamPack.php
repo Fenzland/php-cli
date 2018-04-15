@@ -6,7 +6,7 @@ namespace Fenzland\CLI;
 
 ////////////////////////////////////////////////////////////////
 
-class ParamPack implements \Countable, \IteratorAggregate
+class ParamPack implements \Countable, \IteratorAggregate, \ArrayAccess
 {
 
 	/**
@@ -178,6 +178,74 @@ class ParamPack implements \Countable, \IteratorAggregate
 	public function lastOthers():array
 	{
 		return array_reverse( $this->cut( -1 ) );
+	}
+
+	/**
+	 * Check if option exists via array access style.
+	 *
+	 * @param  mixed $offset
+	 *
+	 * @return bool
+	 */
+	public function offsetExists( $offset ):bool
+	{
+		$this->checkOffset( $offset );
+		
+		return !is_null( $this->pick( $offset ) );
+	}
+
+	/**
+	 * Get option value via array access style.
+	 *
+	 * @param  mixed $offset
+	 *
+	 * @return mixed
+	 */
+	public function offsetGet( $offset )
+	{
+		$this->checkOffset( $offset );
+		
+		return $this->pick( $offset );
+	}
+
+	/**
+	 * Set option value via array access style.
+	 *
+	 * @param  mixed $offset
+	 * @param  mixed $value
+	 *
+	 * @return void
+	 */
+	public function offsetSet( $offset, $value ):void
+	{
+		throw new \Exception( 'ReadOnly' );
+	}
+
+	/**
+	 * Remove option via array access style.
+	 *
+	 * @param  mixed $offset
+	 *
+	 * @return void
+	 */
+	public function offsetUnset( $offset ):void
+	{
+		throw new \Exception( 'ReadOnly' );
+	}
+
+	/**
+	 * Method checkOffset
+	 *
+	 * @access private
+	 *
+	 * @param  mixed $offset
+	 *
+	 * @return void
+	 */
+	private function checkOffset( $offset ):void
+	{
+		if(!( is_int( $offset ) ))
+			throw new \Exception( 'Offset of paramPack must be a integer.' );
 	}
 
 	/**
